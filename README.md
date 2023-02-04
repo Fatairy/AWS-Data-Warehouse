@@ -109,31 +109,31 @@ staging_songs
 Dimension tables:
 ```
 users
-	- user_id int	PRIMARY KEY,
-	- first_name varchar,
-	- last_name varchar,
-	- gender varchar,
-	- level varchar
+    - user_id int SORTKEY PRIMARY KEY,
+    - first_name varchar,
+    - last_name varchar,
+    - gender varchar,
+    - level varchar
 ```
 ```
 songs                       
-    - song_id varchar PRIMARY KEY,
-    - title varchar NOT NULL,
+    - song_id varchar SORTKEY PRIMARY KEY,
+    - title varchar,
     - artist_id varchar ,
     - year int,
     - duration numeric NOT NULL
 ```
 ```
 artists                       
-    - artist_id varchar PRIMARY KEY,
-    - name varchar NOT NULL,
+    - artist_id varchar SORTKEY PRIMARY KEY,
+    - name varchar,
     - location varchar,
     - latitude float,
     - longitude float
 ```
 ```
 time                       
-    - start_time TIMESTAMP PRIMARY KEY,
+    - start_time TIMESTAMP  DISTKEY SORTKEY PRIMARY KEY
     - hour int,
     - day int,
     - week int,
@@ -145,9 +145,9 @@ Fact table
 
 ```
 songplays                       
-    - songplay_id SERIAL PRIMARY KEY,
-    - start_time TIMESTAMP NOT NULL,
-    - user_id int NOT NULL,
+    - songplay_id IDENTITY(0,1) PRIMARY KEY,
+    - start_time TIMESTAMP SORTKEY DISTKEY,
+    - user_id int,
     - level varchar,
     - song_id varchar ,
     - artist_id varchar,
