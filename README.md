@@ -121,7 +121,7 @@ songs
     - title varchar,
     - artist_id varchar ,
     - year int,
-    - duration numeric NOT NULL
+    - duration numeric
 ```
 ```
 artists                       
