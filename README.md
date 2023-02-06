@@ -119,7 +119,7 @@ users
 songs                       
     - song_id varchar SORTKEY PRIMARY KEY,
     - title varchar,
-    - artist_id varchar ,
+    - artist_id varchar,
     - year int,
     - duration numeric
 ```
