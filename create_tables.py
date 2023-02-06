@@ -4,6 +4,17 @@ from sql_queries import create_table_queries, drop_table_queries
 
 
 def drop_tables(cur, conn):
+    '''
+    Drops all existing tables at the Redshift cluster
+
+            Parameters:
+                    cur (object): A cursor for the connection of the database
+                    conn (object): The connection for the database
+
+            Returns:
+                    Void
+    
+    '''
     for query in drop_table_queries:
         cur.execute(query)
         conn.commit()
@@ -12,6 +23,17 @@ def drop_tables(cur, conn):
 
 
 def create_tables(cur, conn):
+    '''
+    Creates all the tables at the Redshift cluster if the tables do not exists
+
+            Parameters:
+                    cur (object): A cursor for the connection of the database
+                    conn (object): The connection for the database
+
+            Returns:
+                    Void
+    
+    '''
     for query in create_table_queries:
         cur.execute(query)
         conn.commit()
@@ -19,6 +41,17 @@ def create_tables(cur, conn):
 
 
 def main():
+    '''
+    Main function:
+        connects to the database at the Redshift cluster, Drops all existing tables then creates the staging, dimension, 
+        and fact tables.
+            Parameters:
+                    None
+
+            Returns:
+                    Void
+    
+    '''
     config = configparser.ConfigParser()
     config.read('dwh.cfg')
     print('Connecting to the database')

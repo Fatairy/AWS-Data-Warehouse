@@ -149,7 +149,7 @@ songplay_table_insert = ("""
                             se.location, 
                             se.userAgent
                         FROM staging_events AS se INNER JOIN staging_songs AS ss
-                        ON se.song = ss.title AND se.artist = ss.artist_name
+                        ON se.song = ss.title AND se.artist = ss.artist_name AND se.length = ss.duration
                         WHERE se.page = 'NextSong'
     
 """)
@@ -192,7 +192,7 @@ artist_table_insert = ("""
 
 time_table_insert = ("""
                         INSERT INTO time (start_time, hour, day, week, month, year, weekday)
-                        SELECT 
+                        SELECT DISTINCT
                             start_time, 
                             extract(hour from start_time), 
                             extract(day from start_time), 
