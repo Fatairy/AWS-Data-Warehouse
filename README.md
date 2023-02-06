@@ -109,11 +109,11 @@ staging_songs
 Dimension tables:
 ```
 users
-	- user_id int SORTKEY PRIMARY KEY,
-	- first_name varchar,
-	- last_name varchar,
-	- gender varchar,
-	- level varchar
+    - user_id int SORTKEY PRIMARY KEY,
+    - first_name varchar,
+    - last_name varchar,
+    - gender varchar,
+    - level varchar
 ```
 ```
 songs                       
@@ -121,7 +121,7 @@ songs
     - title varchar,
     - artist_id varchar ,
     - year int,
-    - duration numeric NOT NULL
+    - duration numeric
 ```
 ```
 artists                       
